@@ -1,12 +1,9 @@
 name: Auto update Submodules
 
-concurrency:
-  group: jupyterbook-${{ github.ref }}
-
 on:
-  schedule:
-    - cron: '*/5 * * * *' # Every 5 minutes
   workflow_dispatch:
+  schedule:
+    - cron: '* * * * *' # Every 5 minutes
 
 jobs:
   update-notebook:
