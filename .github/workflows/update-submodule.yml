@@ -19,7 +19,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
-          title: Package Update
+          title: Submodules Update
           token: ${{ secrets.PAT }} # PAT with repo access
           labels: |
             automerge
