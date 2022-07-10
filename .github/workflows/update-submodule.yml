@@ -1,0 +1,30 @@
+name: Auto update Submodules
+
+concurrency:
+  group: jupyter-book
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '* * * * *' # Every 5 minutes
+
+jobs:
+  update-notebook:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/sosiristseng/docker-jupyterbook:latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Update Submodules
+        run: |
+          git submodule init
+          git submodule update --remote --merge
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          title: Package Update
+          token: ${{ secrets.PAT }} # PAT with repo access
+          labels: |
+            automerge

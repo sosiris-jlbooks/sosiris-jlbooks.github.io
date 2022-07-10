@@ -1,0 +1,4 @@
+[submodule "docs/vis"]
+	path = docs/pyplot
+	url = https://github.com/sosiris-jlbooks/pyplotjl.git
+	branch = gh-pages
