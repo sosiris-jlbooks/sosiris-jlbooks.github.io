@@ -1,7 +1,7 @@
 name: Build Jupyter Book
 
 concurrency:
-  group: jupyter-book
+  group: jupyterbook-${{ github.ref }}
 
 on:
   push:

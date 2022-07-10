@@ -1,18 +1,16 @@
 name: Auto update Submodules
 
 concurrency:
-  group: jupyter-book
+  group: jupyterbook-${{ github.ref }}
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '* * * * *' # Every 5 minutes
+    - cron: '*/5 * * * *' # Every 5 minutes
 
 jobs:
   update-notebook:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/sosiristseng/docker-jupyterbook:latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
