@@ -17,6 +17,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: 'recursive'
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v1
       - name: Build website
         run: docker run -v ${{ github.workspace }}:/work ghcr.io/sosiristseng/docker-jupyterbook:latest jupyter-book build /work/docs/ -v
       - name: Upload page artifact
